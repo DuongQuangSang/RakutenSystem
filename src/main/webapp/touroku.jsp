@@ -68,7 +68,7 @@
                                         <input type="radio" id="igai" name="check" value="on">
                                         <label for="igai">メールアドレス以外をユーザIDとして使用</label><br>    
                                         <6文字以上・半角英数字> 数字だけにすることはできません<br>
-                                        <input id="userId" class="text" type="text" name="userId"><br>
+                                        <input id="userId" class="text" type="text" name="userID"><br>
                                         <img class="userIderror" src="./images/arrow32.gif" width="32" height="11" alt="">
                                         <span class="userIderrormes" style="color: #ff0000; font-weight: bold;">aaa</span><br>
                                     </em>

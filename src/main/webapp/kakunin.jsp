@@ -1,5 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+%>
+<%
+String email = (String) request.getAttribute("email");
+String userID  = (String) request.getAttribute("userID");
+String passWord  = (String) request.getAttribute("passWord");
+String sei  = (String) request.getAttribute("sei");
+String mei  = (String) request.getAttribute("mei");
+String seiKata  = (String) request.getAttribute("seiKata");
+String meiKata  = (String) request.getAttribute("meiKata");
+out.println(email);
+out.println(userID);
+out.println(passWord);
+out.println(sei + mei);
+out.println(seiKata + meiKata);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +44,7 @@
         </div>
         <div id="contents">
             <h2>楽天会員登録</h2>
-            <form name="RegistForm" action="">
+            <form name="RegistForm" action="kakunin" method="post">
                 <div id="step2" class="step">
                     <ul>
                         <li style="color: #BF0000;">会員情報の入力</li>
@@ -43,7 +58,7 @@
                         <tr>
                             <th class="yel head">メールアドレス
                                 <td>
-                                    <em id="emailShow">
+                                    <em id="emailShow"><%= request.getAttribute("email") %>
                                     </em>
                                 </td>
                                 <td class="end"><a href=""></a></td>
@@ -54,7 +69,7 @@
                             <th class="yel head">ユーザID
                                 <td>
                                     <em id="userIdShow"><br>
-                                        （メールアドレスをユーザIDとして使用します）
+                                        <%= request.getAttribute("userID") %>
                                     </em>
                                 </td>
                                 <td class="end"><a href=""></a></td>
@@ -78,7 +93,7 @@
                         <tr>
                             <th class="yel head">氏名
                                 <td>
-                                    <em id="seiMei">
+                                    <em id="seiMei"><%= request.getAttribute("sei") + "" + request.getAttribute("mei")%>
                                     </em>
                                 </td>
                                 <td class="end"><a href=""></a></td>
@@ -88,7 +103,7 @@
                         <tr>
                             <th class="yel head">氏名（フリガナ）
                                 <td>
-                                    <em id="seiMeiKata">
+                                    <em id="seiMeiKata"><%= request.getAttribute("seiKata") + "" + request.getAttribute("meiKata")%>
                                     </em>
                                 </td>
                                 <td class="end"><a href=""></a></td>
@@ -96,30 +111,31 @@
                         </tr>
                     </tbody>             
                 </table>
+                <p>
+                    <input type="submit" name="execMethod" value="<<入力画面に戻って変更する">
+                </p>
+                <div class="tbl">
+                    <p><img src="./images/icn_mail.gif" alt=""> <b>楽天会員ニュース（週1回～2回配信）</b><br>
+                        楽天会員ニュースは、楽天グループのキャンペーンやイベント情報などをご案内するメールマガジンです。<span style="color: #bf0000;"><b>楽天会員情報にご登録されたメールアドレス宛</b></span> に楽天グループ株式会社よりお送りいたします。<br>
+                        <br>
+                        ※「購読する」をチェック頂いた方には、ご自身のポイント獲得状況が確認できる「ポイント獲得実績のお知らせ」もお届けします。<br>
+                        ※楽天会員ニュース・ポイント獲得実績のお知らせは購読管理ページからいつでも配信停止/再開できます。<br>
+                        <br>
+                        購読を希望されない場合は<span style="color: #bf0000;"><b>「購読する」のチェックを外してください。</b></span></p>
+                        <input type="checkbox" checked><b> 購読する</b>
+                </div>
+                <p class="sub">
+                    上記の情報に間違いがなければ、「登録する」ボタンを押して、登録を完了してください。<br>
+    「入力画面に戻って変更する」ボタンを押すと、入力画面に戻ります。<br>
+                    </p>
+                    <p class="submit">
+                        <input type="submit" name="execMethod" value="登録する">  <!-- <onclick="kanryouFunc()" -->
+                    </p>
+                <p style="text-align: center;">
+                    <a href="https://privacy.rakuten.co.jp/" target="_blank">個人情報保護方針</a>
+                </p>
             </form>
-            <p>
-                <input type="submit" name="execMethod" value="<<入力画面に戻って変更する">
-            </p>
-            <div class="tbl">
-                <p><img src="./images/icn_mail.gif" alt=""> <b>楽天会員ニュース（週1回～2回配信）</b><br>
-                    楽天会員ニュースは、楽天グループのキャンペーンやイベント情報などをご案内するメールマガジンです。<span style="color: #bf0000;"><b>楽天会員情報にご登録されたメールアドレス宛</b></span> に楽天グループ株式会社よりお送りいたします。<br>
-                    <br>
-                    ※「購読する」をチェック頂いた方には、ご自身のポイント獲得状況が確認できる「ポイント獲得実績のお知らせ」もお届けします。<br>
-                    ※楽天会員ニュース・ポイント獲得実績のお知らせは購読管理ページからいつでも配信停止/再開できます。<br>
-                    <br>
-                    購読を希望されない場合は<span style="color: #bf0000;"><b>「購読する」のチェックを外してください。</b></span></p>
-                    <input type="checkbox" checked><b> 購読する</b>
-            </div>
-            <p class="sub">
-                上記の情報に間違いがなければ、「登録する」ボタンを押して、登録を完了してください。<br>
-「入力画面に戻って変更する」ボタンを押すと、入力画面に戻ります。<br>
-                </p>
-                <p class="submit">
-                    <input type="submit" name="execMethod" value="登録する" onclick="kanryouFunc()">
-                </p>
-            <p style="text-align: center;">
-                <a href="https://privacy.rakuten.co.jp/" target="_blank">個人情報保護方針</a>
-            </p>
+            
         </div>
     </div>
     <div><hr size="1" style="display:block;">
