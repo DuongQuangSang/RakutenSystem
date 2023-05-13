@@ -2,13 +2,13 @@
     pageEncoding="UTF-8"
 %>
 <%
-  	String email = (String) request.getAttribute("email");
-	String userID  = (String) request.getAttribute("userID");
-	String passWord  = (String) request.getAttribute("passWord");
-	String sei  = (String) request.getAttribute("sei");
-	String mei  = (String) request.getAttribute("mei");
-	String seiKata  = (String) request.getAttribute("seiKata");
-	String meiKata  = (String) request.getAttribute("meiKata");
+  	String email = (String) session.getAttribute("email");
+	String userID  = (String) session.getAttribute("userID");
+	String passWord  = (String) session.getAttribute("passWord");
+	String sei  = (String) session.getAttribute("sei");
+	String mei  = (String) session.getAttribute("mei");
+	String seiKata  = (String) session.getAttribute("seiKata");
+	String meiKata  = (String) session.getAttribute("meiKata");
 %>
 <%
   if (email != null 
@@ -19,6 +19,11 @@
   && seiKata != null 
   && meiKata != null) {
     out.println("Thông tin đã được lưu vào cơ sở dữ liệu thành công.");
+    out.println(email);
+    out.println(userID);
+    out.println(passWord);
+    out.println(sei + "" + mei);
+    out.println(seiKata + "" + meiKata);
   } else {
     out.println("Lỗi: Không thể lưu thông tin vào cơ sở dữ liệu.");
     out.println(email);

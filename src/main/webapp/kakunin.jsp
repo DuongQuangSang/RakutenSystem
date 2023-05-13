@@ -2,19 +2,22 @@
     pageEncoding="UTF-8"
 %>
 <%
-String email = (String) request.getAttribute("email");
-String userID  = (String) request.getAttribute("userID");
-String passWord  = (String) request.getAttribute("passWord");
-String sei  = (String) request.getAttribute("sei");
-String mei  = (String) request.getAttribute("mei");
-String seiKata  = (String) request.getAttribute("seiKata");
-String meiKata  = (String) request.getAttribute("meiKata");
-out.println(email);
-out.println(userID);
-out.println(passWord);
-out.println(sei + mei);
-out.println(seiKata + meiKata);
+String email = request.getParameter("email");
+String userID  = request.getParameter("userID");
+String passWord  = request.getParameter("passWord");
+String sei  = request.getParameter("sei");
+String mei  = request.getParameter("mei");
+String seiKata  = request.getParameter("seiKata");
+String meiKata  = request.getParameter("meiKata");
+session.setAttribute("email", email); 
+session.setAttribute("userID", userID); 
+session.setAttribute("passWord", passWord); 
+session.setAttribute("sei", sei); 
+session.setAttribute("mei", mei); 
+session.setAttribute("seiKata", seiKata); 
+session.setAttribute("meiKata", meiKata); 
 %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,7 +96,7 @@ out.println(seiKata + meiKata);
                         <tr>
                             <th class="yel head">氏名
                                 <td>
-                                    <em id="seiMei"><%= request.getAttribute("sei") + "" + request.getAttribute("mei")%>
+                                    <em id="seiMei"><%= request.getAttribute("sei") + " " + request.getAttribute("mei")%>
                                     </em>
                                 </td>
                                 <td class="end"><a href=""></a></td>
@@ -103,7 +106,7 @@ out.println(seiKata + meiKata);
                         <tr>
                             <th class="yel head">氏名（フリガナ）
                                 <td>
-                                    <em id="seiMeiKata"><%= request.getAttribute("seiKata") + "" + request.getAttribute("meiKata")%>
+                                    <em id="seiMeiKata"><%= request.getAttribute("seiKata") + " " + request.getAttribute("meiKata")%>
                                     </em>
                                 </td>
                                 <td class="end"><a href=""></a></td>
