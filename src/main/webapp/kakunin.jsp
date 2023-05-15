@@ -9,13 +9,13 @@ String sei  = request.getParameter("sei");
 String mei  = request.getParameter("mei");
 String seiKata  = request.getParameter("seiKata");
 String meiKata  = request.getParameter("meiKata");
-session.setAttribute("email", email); 
-session.setAttribute("userID", userID); 
-session.setAttribute("passWord", passWord); 
-session.setAttribute("sei", sei); 
-session.setAttribute("mei", mei); 
-session.setAttribute("seiKata", seiKata); 
-session.setAttribute("meiKata", meiKata); 
+session.setAttribute("email", email);
+session.setAttribute("userID", userID);
+session.setAttribute("passWord", passWord);
+session.setAttribute("sei", sei);
+session.setAttribute("mei", mei);
+session.setAttribute("seiKata", seiKata);
+session.setAttribute("meiKata", meiKata);
 %>
 
 <!DOCTYPE html>

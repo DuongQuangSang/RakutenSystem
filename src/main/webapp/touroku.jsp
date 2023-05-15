@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,13 +48,23 @@
                                 <td>
                                     <em><半角英数字><br>
                                     他の会員が登録済みのメールアドレスは登録できません。<br>
-                                    <input id="email" class="text" type="email" name="email"><br>
-                                    <img class="emailerror" src="./images/arrow32.gif" width="32" height="11" alt="">
-                                    <span class="emailerrormes" style="color: #ff0000; font-weight: bold;">aaa</span><br>
+                                    <input id="email" class="text" type="email" name="email" value="${email}"><br>
+                                    
+                                    <c:if test="${isemailisexist}">
+                                    	<img class="emailerror ${emailerror}" src="./images/arrow32.gif" width="32" height="11" alt="">
+                                    	<span class="emailerrormes" style="color: #ff0000; font-weight: bold;">${emailnull}</span>
+                                    </c:if>
+                                    
+                                    <br>
                                     確認のためもう一度入力してください（コピー・貼り付けはしないでください。<br>
-                                    <input id="emailkakunin" class="text" type="text" name="emailkakunin"><br>
-                                    <img class="emailkakuninerror" src="./images/arrow32.gif" width="32" height="11" alt="">
-                                    <span class="emailkakuninerrormes" style="color: #ff0000; font-weight: bold;">aaa</span><br>
+                                    <input id="emailkakunin" class="text" type="text" name="emailkakunin" value="${emailkakunin}"><br>
+                                    
+                                    <c:if test="${isemailsame}">
+	                                    <img class="emailkakuninerror ${emailkakuninerror}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                    <span class="emailkakuninerrormes" style="color: #ff0000; font-weight: bold;">${emailequal}</span><br>
+	                                    <br>
+                                    </c:if>
+                                    
                                     </em>
                                 </td>
                                 <td class="end"><a href="">詳しいヘルプ</a></td>
@@ -63,14 +75,24 @@
                             <th class="head">ユーザID<span class="right">必須</span>
                                 <td>
                                     <em>会員向けサービスにログインするときに使用します。<br>
-                                        <input type="radio" id="onaji" name="check" checked value="off">
+                                        <input type="radio" id="onaji" name="check" checked value="on">
                                         <label for="onaji">メールアドレスをユーザIDとして使用</label><br><br>
-                                        <input type="radio" id="igai" name="check" value="on">
+                                        <input type="radio" id="igai" name="check" value="off">
                                         <label for="igai">メールアドレス以外をユーザIDとして使用</label><br>    
                                         <6文字以上・半角英数字> 数字だけにすることはできません<br>
                                         <input id="userId" class="text" type="text" name="userID"><br>
-                                        <img class="userIderror" src="./images/arrow32.gif" width="32" height="11" alt="">
-                                        <span class="userIderrormes" style="color: #ff0000; font-weight: bold;">aaa</span><br>
+                                        
+                                        <c:if test="${isuserempty}">
+	                                        <img class="userIderror ${userIderror}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="userIderrormes" style="color: #ff0000; font-weight: bold;">${userempty}</span><br>
+	                                        <br>
+                                        </c:if>
+                                        <c:if test="${eisuji}">
+	                                        <img class="userIderror ${usereisujiclass}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="userIderrormes" style="color: #ff0000; font-weight: bold;">${usereisuji}</span><br>
+	                                        <br>
+                                        </c:if>
+                                        
                                     </em>
                                 </td>
                                 <td class="end"><a href="">詳しいヘルプ</a></td>
@@ -85,7 +107,7 @@
                                         第三者によるログインを防ぐために、できるだけ複雑なものを設定してください。<br>
                                         <input id="passWord" class="text" type="password" name="passWord"><br>
                                         <img class="passWorderror" src="./images/arrow32.gif" width="32" height="11" alt="">
-                                        <span class="passWorderrormes" style="color: #ff0000; font-weight: bold;">aaa</span><br>
+                                        <span class="passWorderrormes" style="color: #ff0000; font-weight: bold;"></span><br>
                                         <br><br>
                                     </em>
                                 </td>
@@ -136,7 +158,7 @@
             楽天会員への登録には、規約および<a target="_blank" href="https://privacy.rakuten.co.jp/">個人情報保護方針</a>への同意が必要です。
             </p>
             <p class="submit">
-                <input type="submit" id="signup" name="signup" value="同意して次へ">  <!-- onclick="douiFunc()" -->
+                <input type="submit" id="signup" name="signup" value="同意して次へ" onclick="douiFunc()">  <!--  -->
             </p>
             </form>
             

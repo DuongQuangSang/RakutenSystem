@@ -2,7 +2,7 @@ package com.rakuten.model;
 
 public class User {
 	private String email;
-	private String userID;
+	private String userId;
 	private String passWord;
 	private String sei;
 	private String mei;
@@ -11,17 +11,15 @@ public class User {
 	
 	public User() {
 	}
-
-	public User(String email, String userID, String passWord, String sei, String mei, String seiKata, String meiKata) {
-//	,Timestamp createDate
+	
+	public User(String email, String userId, String passWord, String sei, String mei, String seiKata, String meiKata) {
 		this.email = email;
-		this.userID = userID;
+		this.userId = userId;
 		this.passWord = passWord;
 		this.sei = sei;
 		this.mei = mei;
 		this.seiKata = seiKata;
 		this.meiKata = meiKata;
-//		this.createDate = createDate;
 	}
 
 	public String getEmail() {
@@ -32,12 +30,12 @@ public class User {
 		this.email = email;
 	}
 
-	public String getUserID() {
-		return userID;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUserID(String userID) {
-		this.userID = userID;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getPassWord() {
@@ -79,5 +77,13 @@ public class User {
 	public void setMeiKata(String meiKata) {
 		this.meiKata = meiKata;
 	}
+
+//	public String getEmailkakunin() {
+//		return emailkakunin;
+//	}
+//
+//	public void setEmailkakunin(String emailkakunin) {
+//		this.emailkakunin = emailkakunin;
+//	}
 
 }

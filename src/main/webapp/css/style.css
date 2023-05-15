@@ -219,22 +219,33 @@ h3.red {
     width: 450px;
 }
 
-.emailerror,
+
 .emailerrormes,
 .emailkakuninerror, 
 .emailkakuninerrormes, 
-.userIderror, 
+
 .userIderrormes, 
 .passWorderror, 
 .passWorderrormes,
-.seierror,
+
 .seierrormes,
-.meierror,
+
 .meierrormes,
-.seiKataerror,
+
 .seiKataerrormes,
-.meiKataerror,
+
 .meiKataerrormes {
+    /* display: none; */
+}
+
+.emailerror,
+.emailkakuninerror,
+.userIderror, 
+.passWorderror,
+.seierror,
+.meierror,
+.seiKataerror,
+.meiKataerror {
     display: none;
 }
 
