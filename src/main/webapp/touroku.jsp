@@ -51,8 +51,18 @@
                                     <input id="email" class="text" type="email" name="email" value="${email}"><br>
                                     
                                     <c:if test="${isemailisexist}">
-                                    	<img class="emailerror ${emailerror}" src="./images/arrow32.gif" width="32" height="11" alt="">
-                                    	<span class="emailerrormes" style="color: #ff0000; font-weight: bold;">${emailnull}</span>
+                                    	<img class="emailerror ${isemailisexistshow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+                                    	<span class="emailerrormes" style="color: #ff0000; font-weight: bold;">${isemailisexistmess}</span>
+                                    </c:if>
+                                    
+                                    <c:if test="${isemilempty}">
+                                    	<img class="emailerror ${isemilemptyshow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+                                    	<span class="emailerrormes" style="color: #ff0000; font-weight: bold;">${isemilemptymess}</span>
+                                    </c:if>
+                                    
+                                    <c:if test="${isemail}">
+                                    	<img class="emailerror ${isemailshow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+                                    	<span class="emailerrormes" style="color: #ff0000; font-weight: bold;">${isemailmess}</span>
                                     </c:if>
                                     
                                     <br>
@@ -75,21 +85,21 @@
                             <th class="head">ユーザID<span class="right">必須</span>
                                 <td>
                                     <em>会員向けサービスにログインするときに使用します。<br>
-                                        <input type="radio" id="onaji" name="check" checked value="on">
+                                        <input type="radio" id="onaji" name="check" checked value="on" ${selectedRadio == 'on' ? 'checked' : ''}>
                                         <label for="onaji">メールアドレスをユーザIDとして使用</label><br><br>
-                                        <input type="radio" id="igai" name="check" value="off">
+                                        <input type="radio" id="igai" name="check" value="off" ${selectedRadio == 'off' ? 'checked' : ''}>
                                         <label for="igai">メールアドレス以外をユーザIDとして使用</label><br>    
                                         <6文字以上・半角英数字> 数字だけにすることはできません<br>
-                                        <input id="userId" class="text" type="text" name="userID"><br>
+                                        <input id="userId" class="text" type="text" name="userId" value="${userId}"><br>
                                         
-                                        <c:if test="${isuserempty}">
-	                                        <img class="userIderror ${userIderror}" src="./images/arrow32.gif" width="32" height="11" alt="">
-	                                        <span class="userIderrormes" style="color: #ff0000; font-weight: bold;">${userempty}</span><br>
+                                        <c:if test="${useridisempty}">
+	                                        <img class="userIderror ${useridisemptyshow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="userIderrormes" style="color: #ff0000; font-weight: bold;">${useridisemptymess}</span><br>
 	                                        <br>
                                         </c:if>
-                                        <c:if test="${eisuji}">
-	                                        <img class="userIderror ${usereisujiclass}" src="./images/arrow32.gif" width="32" height="11" alt="">
-	                                        <span class="userIderrormes" style="color: #ff0000; font-weight: bold;">${usereisuji}</span><br>
+                                        <c:if test="${useridnotuser}">
+	                                        <img class="userIderror ${useridnotusershow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="userIderrormes" style="color: #ff0000; font-weight: bold;">${useridnotusermess}</span><br>
 	                                        <br>
                                         </c:if>
                                         
@@ -105,9 +115,18 @@
                                     <em><6文字以上半角英数字><br>
                                         「ユーザID」と同じものは登録できません<br>
                                         第三者によるログインを防ぐために、できるだけ複雑なものを設定してください。<br>
-                                        <input id="passWord" class="text" type="password" name="passWord"><br>
-                                        <img class="passWorderror" src="./images/arrow32.gif" width="32" height="11" alt="">
-                                        <span class="passWorderrormes" style="color: #ff0000; font-weight: bold;"></span><br>
+                                        <input id="passWord" class="text" type="password" name="passWord" value="${passWord}"><br>
+                                        
+                                        <c:if test="${passwordempty}">
+	                                        <img class="passWorderror ${passwordemptyshow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="passWorderrormes" style="color: #ff0000; font-weight: bold;">${passwordemptymess}</span><br>
+                                         </c:if>
+                                         
+                                         <c:if test="${notpassword}">
+	                                        <img class="passWorderror ${notpasswordshow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="passWorderrormes" style="color: #ff0000; font-weight: bold;">${notpasswordmess}</span><br>
+                                         </c:if>
+                                         
                                         <br><br>
                                     </em>
                                 </td>
@@ -125,13 +144,18 @@
                                     <em>入力情報に誤りがあると、パスワード再設定が正しく行えない場合があります。
                                         ご自身の氏名をお間違えないように登録してください。<br>
                                         <ul>
-                                            <li><span>（姓）</span><input id="sei" class="text-30" type="text" name="sei"></li>
-                                            <li><span>（名）</span><input id="mei" class="text-30" type="text" name="mei"></li>
+                                            <li><span>（姓）</span><input id="sei" class="text-30" type="text" name="sei" value="${sei}"></li>
+                                            <li><span>（名）</span><input id="mei" class="text-30" type="text" name="mei" value="${mei}"></li>
                                         </ul>
-                                        <img class="seierror" src="./images/arrow32.gif" width="32" height="11" alt="">
-                                        <span class="seierrormes" style="color: #ff0000; font-weight: bold;"></span><br>
-                                        <img class="meierror" src="./images/arrow32.gif" width="32" height="11" alt="">
-                                        <span class="meierrormes" style="color: #ff0000; font-weight: bold;"></span><br>
+                                        <c:if test="${seiempty}">
+	                                        <img class="seierror ${seiemptyshow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="seierrormes" style="color: #ff0000; font-weight: bold;">${seiemptymess}</span><br>
+	                                     </c:if>
+	                                     
+	                                     <c:if test="${meiempty}">
+	                                        <img class="meierror ${meiemptyshow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="meierrormes" style="color: #ff0000; font-weight: bold;">${meiemptymess}</span><br>
+                                        </c:if>
                                     </em>
                                 </td>
                             </th>
@@ -141,13 +165,30 @@
                                 <td class="end">
                                     <em><全角カタカナのみ><br>
                                         <ul>
-                                            <li><span>（姓）</span><input id="seiKata" class="text-30" type="text" name="seiKata"></li>
-                                            <li><span>（名）</span><input id="meiKata" class="text-30" type="text" name="meiKata"></li>
+                                            <li><span>（姓）</span><input id="seiKata" class="text-30" type="text" name="seiKata" value="${seiKata}"></li>
+                                            <li><span>（名）</span><input id="meiKata" class="text-30" type="text" name="meiKata" value="${meiKata}"></li>
                                         </ul>
-                                        <img class="seiKataerror" src="./images/arrow32.gif" width="32" height="11" alt="">
-                                        <span class="seiKataerrormes" style="color: #ff0000; font-weight: bold;"></span><br>
-                                        <img class="meiKataerror" src="./images/arrow32.gif" width="32" height="11" alt="">
-                                        <span class="meiKataerrormes" style="color: #ff0000; font-weight: bold;"></span><br>
+                                        
+                                        <c:if test="${seikataempty}">
+	                                        <img class="seiKataerror ${seikataemptyshow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="seiKataerrormes" style="color: #ff0000; font-weight: bold;">${seikataemptymess}</span><br>
+                                        </c:if>
+                                        
+                                        <c:if test="${notseikata}">
+	                                        <img class="seiKataerror ${notseikatashow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="seiKataerrormes" style="color: #ff0000; font-weight: bold;">${notseikatamess}</span><br>
+                                        </c:if>
+                                        
+                                        <c:if test="${meikataempty}">
+	                                        <img class="meiKataerror ${meikataemptyshow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="meiKataerrormes" style="color: #ff0000; font-weight: bold;">${meikataemptymess}</span><br>
+                                        </c:if>
+                                        
+                                        <c:if test="${notmeikata}">
+	                                        <img class="meiKataerror ${notmeikatashow}" src="./images/arrow32.gif" width="32" height="11" alt="">
+	                                        <span class="meiKataerrormes" style="color: #ff0000; font-weight: bold;">${notmeikatamess}</span><br>
+                                        </c:if>
+                                        
                                     </em>
                                 </td>
                             </th>
@@ -158,7 +199,7 @@
             楽天会員への登録には、規約および<a target="_blank" href="https://privacy.rakuten.co.jp/">個人情報保護方針</a>への同意が必要です。
             </p>
             <p class="submit">
-                <input type="submit" id="signup" name="signup" value="同意して次へ" onclick="douiFunc()">  <!--  -->
+                <input type="submit" id="signup" name="signup" value="同意して次へ" >  <!-- onclick="douiFunc()" -->
             </p>
             </form>
             

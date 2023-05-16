@@ -1,22 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
 %>
-<%
-String email = request.getParameter("email");
-String userID  = request.getParameter("userID");
-String passWord  = request.getParameter("passWord");
-String sei  = request.getParameter("sei");
-String mei  = request.getParameter("mei");
-String seiKata  = request.getParameter("seiKata");
-String meiKata  = request.getParameter("meiKata");
-session.setAttribute("email", email);
-session.setAttribute("userID", userID);
-session.setAttribute("passWord", passWord);
-session.setAttribute("sei", sei);
-session.setAttribute("mei", mei);
-session.setAttribute("seiKata", seiKata);
-session.setAttribute("meiKata", meiKata);
-%>
+<%-- <% --%>
+// String email = request.getParameter("email");
+// String userId  = request.getParameter("userId");
+// String passWord  = request.getParameter("passWord");
+// String sei  = request.getParameter("sei");
+// String mei  = request.getParameter("mei");
+// String seiKata  = request.getParameter("seiKata");
+// String meiKata  = request.getParameter("meiKata");
+// session.setAttribute("email", email);
+// session.setAttribute("userId", userId);
+// session.setAttribute("passWord", passWord);
+// session.setAttribute("sei", sei);
+// session.setAttribute("mei", mei);
+// session.setAttribute("seiKata", seiKata);
+// session.setAttribute("meiKata", meiKata);
+// out.print(email);
+// out.print(userId);
+// out.print(passWord);
+// out.print(sei);
+// out.print(mei);
+// out.print(seiKata);
+// out.print(meiKata);
+<%-- %> --%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,9 +78,17 @@ session.setAttribute("meiKata", meiKata);
                         <tr>
                             <th class="yel head">ユーザID
                                 <td>
+                                
                                     <em id="userIdShow"><br>
-                                        <%= request.getAttribute("userID") %>
+                                        <%= request.getAttribute("userId") %>
                                     </em>
+                                    
+<%--                                     <c:if test="${useridset}"> --%>
+<!-- 	                                    <em id="userIdShow"><br> -->
+<%-- 	                                        ${isemailisexistshow} --%>
+<!-- 	                                    </em> -->
+<!--                                     </c:if> -->
+                                   
                                 </td>
                                 <td class="end"><a href=""></a></td>
                             </th>

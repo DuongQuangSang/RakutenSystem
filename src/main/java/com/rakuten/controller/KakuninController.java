@@ -33,7 +33,7 @@ public class KakuninController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String email = (String) session.getAttribute("email");
-		String userId  = (String) session.getAttribute("userID");
+		String userId  = (String) session.getAttribute("userId");
 		String passWord  = (String) session.getAttribute("passWord");
 		String sei  = (String) session.getAttribute("sei");
 		String mei  = (String) session.getAttribute("mei");
@@ -43,7 +43,11 @@ public class KakuninController extends HttpServlet {
 		User user = new User(email, userId, passWord, sei, mei, seiKata, meiKata);
 		UserDao userDAO = new UserDao();
 		try {
-			userDAO.insertUser(user);
+			if(userId.isEmpty()) {
+				userDAO.insertUserid(user);
+			} else {
+				userDAO.insertUser(user);
+			}
 		} catch (SQLException e) {
 			 e.printStackTrace();
 		}

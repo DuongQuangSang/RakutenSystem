@@ -39,7 +39,35 @@ public class UserDao {
 			Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+	
+	public void insertUserid(User user) throws SQLException {
 
+		JDBCConn conn = new JDBCConn();
+		java.util.Date utilDate = new java.util.Date();
+		java.sql.Timestamp timestamp = new java.sql.Timestamp(utilDate.getTime());
+		try {
+			conn.getDbcom();
+			String sql = ("insert into users_rakutensystem(email,user_id,password,sei,mei,sei_kata,mei_kata,create_date) values (?,?,?,?,?,?,?,?);");
+			PreparedStatement pstmt = conn.createPreparedStatement(sql);
+			pstmt.setString(1, user.getEmail());
+			pstmt.setString(2, user.getEmail());
+			pstmt.setString(3, user.getPassWord());
+			pstmt.setString(4, user.getSei());
+			pstmt.setString(5, user.getMei());
+			pstmt.setString(6, user.getSeiKata());
+			pstmt.setString(7, user.getMeiKata());
+			pstmt.setTimestamp(8, timestamp);
+
+			conn.executeUpdate(pstmt);
+
+			conn.closePreparedStatement();
+			conn.closeDbcom();
+		} catch (ClassNotFoundException ex) {
+			Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+	
+	// Email
 	public boolean isExist(User user) throws SQLException {
 		JDBCConn conn = new JDBCConn();
 		try {
@@ -71,4 +99,50 @@ public class UserDao {
 		}
 	}
 
+	// UserId
+	public boolean isUserId(User user) {
+		String userIdRegex = "^[a-zA-Z0-9]{6,}$";
+		Pattern pattern = Pattern.compile(userIdRegex);
+		Matcher matcher = pattern.matcher(user.getUserId());
+		if (matcher.matches()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// PassWord
+	public boolean isPassWord(User user) {
+		String userIdRegex = "^[a-zA-Z0-9]{6,}$";
+		Pattern pattern = Pattern.compile(userIdRegex);
+		Matcher matcher = pattern.matcher(user.getPassWord());
+		if (matcher.matches()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// Kata
+		public boolean isSeiKata(User user) {
+			String userIdRegex = "^[ァ-ヶー]+$";
+			Pattern pattern = Pattern.compile(userIdRegex);
+			Matcher matcher = pattern.matcher(user.getSeiKata());
+			if (matcher.matches()) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		public boolean isMeiKata(User user) {
+			String userIdRegex = "^[ァ-ヶー]+$";
+			Pattern pattern = Pattern.compile(userIdRegex);
+			Matcher matcher = pattern.matcher(user.getMeiKata());
+			if (matcher.matches()) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 }

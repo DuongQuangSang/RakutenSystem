@@ -85,5 +85,6 @@ public class User {
 //	public void setEmailkakunin(String emailkakunin) {
 //		this.emailkakunin = emailkakunin;
 //	}
-
+	 
+	
 }

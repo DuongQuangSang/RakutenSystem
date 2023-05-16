@@ -1,38 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
 %>
-<%
-  	String email = (String) session.getAttribute("email");
-	String userID  = (String) session.getAttribute("userID");
-	String passWord  = (String) session.getAttribute("passWord");
-	String sei  = (String) session.getAttribute("sei");
-	String mei  = (String) session.getAttribute("mei");
-	String seiKata  = (String) session.getAttribute("seiKata");
-	String meiKata  = (String) session.getAttribute("meiKata");
-%>
-<%
-  if (email != null 
-  && userID != null 
-  && passWord != null 
-  && sei != null 
-  && mei != null 
-  && seiKata != null 
-  && meiKata != null) {
-    out.println("Thông tin đã được lưu vào cơ sở dữ liệu thành công.");
-    out.println(email);
-    out.println(userID);
-    out.println(passWord);
-    out.println(sei + "" + mei);
-    out.println(seiKata + "" + meiKata);
-  } else {
-    out.println("Lỗi: Không thể lưu thông tin vào cơ sở dữ liệu.");
-    out.println(email);
-    out.println(userID);
-    out.println(passWord);
-    out.println(sei + mei);
-    out.println(seiKata + meiKata);
-  }
-%>
+<%-- <% --%>
+//   	String email = (String) session.getAttribute("email");
+// 	String userId  = (String) session.getAttribute("userId");
+// 	String passWord  = (String) session.getAttribute("passWord");
+// 	String sei  = (String) session.getAttribute("sei");
+// 	String mei  = (String) session.getAttribute("mei");
+// 	String seiKata  = (String) session.getAttribute("seiKata");
+// 	String meiKata  = (String) session.getAttribute("meiKata");
+<%-- %> --%>
+<%-- <% --%>
+//   if (email != null 
+//   && userId != null 
+//   && passWord != null 
+//   && sei != null 
+//   && mei != null 
+//   && seiKata != null 
+//   && meiKata != null) {
+//     out.println("Thông tin đã được lưu vào cơ sở dữ liệu thành công.");
+//     out.println(email);
+//     out.println(userId);
+//     out.println(passWord);
+//     out.println(sei + "" + mei);
+//     out.println(seiKata + "" + meiKata);
+//   } else {
+//     out.println("Lỗi: Không thể lưu thông tin vào cơ sở dữ liệu.");
+//     out.println(email);
+//     out.println(userId);
+//     out.println(passWord);
+//     out.println(sei + mei);
+//     out.println(seiKata + meiKata);
+//   }
+<%-- %> --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
